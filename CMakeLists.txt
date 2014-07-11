@@ -29,6 +29,8 @@ find_package(Boost 1.55.0)
 
 # cpp-netlib
 set(CPP-NETLIB_BUILD_TESTS OFF)
+set(CPP-NETLIB_BUILD_EXAMPLES OFF)
+set(CPP-NETLIB_DISABLE_FEATURE_TESTS ON)
 add_subdirectory("${LIBS_DIR}/cpp-netlib")
 
 
