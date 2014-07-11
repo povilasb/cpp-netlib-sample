@@ -16,9 +16,20 @@ message(STATUS "Build type: ${CMAKE_BUILD_TYPE}.")
 
 set(CMAKE_CXX_FLAGS_DEBUG "-O0 -g -ggdb")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -fstack-protector -s")
-set(CMAKE_CXX_FLAGS "-std=c++11 -Wall -Wextra -Werror -pedantic")
+set(CMAKE_CXX_FLAGS "-std=c++11 -Wall -Wextra")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-error=unused-parameter")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-error=unused-but-set-variable")
 
 set(LIBS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib")
+
+# Boost
+set(Boost_USE_STATIC_LIBS ON)
+set(Boost_USE_MULTITHREADED ON)
+find_package(Boost 1.55.0)
+
+# cpp-netlib
+set(CPP-NETLIB_BUILD_TESTS OFF)
+add_subdirectory("${LIBS_DIR}/cpp-netlib")
 
 
 set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
