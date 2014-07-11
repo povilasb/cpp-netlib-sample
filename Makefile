@@ -1,6 +1,5 @@
 BUILD_DIR ?= build
 BUILD_TYPE ?= Debug
-BUILD_TESTS ?= OFF
 CMAKE_DIR = $(CURDIR)
 
 PROJECT_NAME = main
@@ -11,6 +10,8 @@ all:
 	@echo "Usage:"
 	@echo "\tmake release"
 	@echo "\tmake debug"
+	@echo "\tmake run-release"
+	@echo "\tmake run-debug"
 .PHONY: all
 
 
@@ -19,7 +20,6 @@ build:
 		cmake \
 		-D CMAKE_BUILD_TYPE=$(BUILD_TYPE) \
 		-D PROJECT_NAME=$(PROJECT_NAME) \
-		-D SKELETON_ENABLE_TESTS=$(BUILD_TESTS) \
 		$(CMAKE_DIR) ; make
 .PHONY: build
 
