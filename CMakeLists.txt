@@ -31,10 +31,13 @@ set(CPP-NETLIB_DISABLE_FEATURE_TESTS ON)
 add_subdirectory("${LIBS_DIR}/cpp-netlib")
 include_directories("${LIBS_DIR}/cpp-netlib")
 
+message(STATUS "Boost thread lib: ${Boost_THREAD_LIBRARY}")
+
 
 set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
 file(GLOB_RECURSE SRC_FILES "${SRC_DIR}/*.cpp")
 
 add_executable("${PROJECT_EXEC}" ${SRC_FILES})
 target_link_libraries("${PROJECT_EXEC}" cppnetlib-client-connections
-	cppnetlib-uri ${Boost_SYSTEM_LIBRARY} ${Boost_THREAD_LIBRARY} pthread)
+	cppnetlib-uri ${Boost_SYSTEM_LIBRARY} ${Boost_THREAD_LIBRARY} pthread
+	rt)
