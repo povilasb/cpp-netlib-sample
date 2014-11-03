@@ -45,4 +45,4 @@ file(GLOB_RECURSE SRC_FILES "${SRC_DIR}/*.cpp")
 
 add_executable("${PROJECT_EXEC}" ${SRC_FILES})
 target_link_libraries("${PROJECT_EXEC}" ${CPPNETLIB_LIBRARIES}
-	${Boost_SYSTEM_LIBRARY} ${Boost_THREAD_LIBRARY} pthread rt)
+	${Boost_LIBRARIES} pthread rt)
