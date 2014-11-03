@@ -30,15 +30,19 @@ set(CPP-NETLIB_BUILD_TESTS OFF)
 set(CPP-NETLIB_BUILD_EXAMPLES OFF)
 set(CPP-NETLIB_DISABLE_FEATURE_TESTS ON)
 add_subdirectory("${LIBS_DIR}/cpp-netlib")
-include_directories("${LIBS_DIR}/cpp-netlib")
 
-message(STATUS "Boost thread lib: ${Boost_THREAD_LIBRARY}")
+find_package(cppnetlib REQUIRED)
+include_directories(${CPPNETLIB_INCLUDE_DIRS})
+
+# Boost
+set(Boost_USE_STATIC_LIBS ON)
+set(Boost_USE_MULTI_THREADED ON)
+find_package(Boost REQUIRED system thread)
 
 
 set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
 file(GLOB_RECURSE SRC_FILES "${SRC_DIR}/*.cpp")
 
 add_executable("${PROJECT_EXEC}" ${SRC_FILES})
-target_link_libraries("${PROJECT_EXEC}" cppnetlib-client-connections
-	cppnetlib-uri ${Boost_SYSTEM_LIBRARY} ${Boost_THREAD_LIBRARY} pthread
-	rt)
+target_link_libraries("${PROJECT_EXEC}" ${CPPNETLIB_LIBRARIES}
+	${Boost_SYSTEM_LIBRARY} ${Boost_THREAD_LIBRARY} pthread rt)
