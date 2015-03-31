@@ -23,9 +23,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-error=unused-but-set-variable")
 set(LIBS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib")
 
 # cpp-netlib
-set(BOOST_INCLUDEDIR "${LIBS_DIR}/boost")
-include_directories("${BOOST_INCLUDEDIR}")
-set(BOOST_LIBRARYDIR "${LIBS_DIR}/boost/libs")
 set(CPP-NETLIB_BUILD_TESTS OFF)
 set(CPP-NETLIB_BUILD_EXAMPLES OFF)
 set(CPP-NETLIB_DISABLE_FEATURE_TESTS ON)
