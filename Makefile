@@ -2,8 +2,7 @@ BUILD_DIR ?= build
 BUILD_TYPE ?= Debug
 CMAKE_DIR = $(CURDIR)
 
-PROJECT_NAME = main
-OUTPUT_EXEC = $(PROJECT_NAME)
+OUTPUT_EXEC = main
 
 
 all:
