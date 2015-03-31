@@ -18,7 +18,6 @@ build:
 	mkdir -p $(BUILD_DIR) ; cd $(BUILD_DIR) ; \
 		cmake \
 		-D CMAKE_BUILD_TYPE=$(BUILD_TYPE) \
-		-D PROJECT_NAME=$(PROJECT_NAME) \
 		-D BOOST_ROOT=lib/boost \
 		$(CMAKE_DIR) ; make
 .PHONY: build
