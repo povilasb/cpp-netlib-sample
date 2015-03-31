@@ -2,14 +2,9 @@ cmake_minimum_required(VERSION 2.6)
 
 # Configurable.
 
-if (NOT DEFINED PROJECT_NAME)
-	set(PROJECT_NAME "main")
-endif(NOT DEFINED PROJECT_NAME)
 
-
-project(${PROJECT_NAME} CXX)
-set(PROJECT_EXEC "${PROJECT_NAME}")
-set(PROJECT_LIB "lib${PROJECT_NAME}")
+project(main CXX)
+set(project_exec "${PROJECT_NAME}")
 
 
 message(STATUS "Build type: ${CMAKE_BUILD_TYPE}.")
@@ -37,9 +32,9 @@ set(Boost_USE_MULTI_THREADED ON)
 find_package(Boost REQUIRED system thread)
 
 
-set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
-file(GLOB_RECURSE SRC_FILES "${SRC_DIR}/*.cpp")
+set(src_dir "${CMAKE_CURRENT_SOURCE_DIR}/src")
+file(GLOB_RECURSE src_files "${src_dir}/*.cpp")
 
-add_executable("${PROJECT_EXEC}" ${SRC_FILES})
-target_link_libraries("${PROJECT_EXEC}" ${CPPNETLIB_LIBRARIES}
+add_executable("${project_exec}" ${src_files})
+target_link_libraries("${project_exec}" ${CPPNETLIB_LIBRARIES}
 	${Boost_LIBRARIES} pthread rt)
