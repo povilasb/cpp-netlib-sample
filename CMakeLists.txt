@@ -15,21 +15,19 @@ set(CMAKE_CXX_FLAGS "-std=c++11 -Wall -Wextra")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-error=unused-parameter")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-error=unused-but-set-variable")
 
-set(LIBS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib")
+set(libs_dir "${CMAKE_CURRENT_SOURCE_DIR}/lib")
 
 # cpp-netlib
-set(CPP-NETLIB_BUILD_TESTS OFF)
-set(CPP-NETLIB_BUILD_EXAMPLES OFF)
-set(CPP-NETLIB_DISABLE_FEATURE_TESTS ON)
-add_subdirectory("${LIBS_DIR}/cpp-netlib")
-
 find_package(cppnetlib REQUIRED)
 include_directories(${CPPNETLIB_INCLUDE_DIRS})
 
 # Boost
 set(Boost_USE_STATIC_LIBS ON)
-set(Boost_USE_MULTI_THREADED ON)
-find_package(Boost REQUIRED system thread)
+set(Boost_USE_MULTITHREADED ON)
+find_package( Boost 1.57.0 REQUIRED
+	unit_test_framework system regex date_time thread filesystem
+	program_options chrono atomic )
+include_directories(${Boost_INCLUDE_DIRS})
 
 
 set(src_dir "${CMAKE_CURRENT_SOURCE_DIR}/src")
